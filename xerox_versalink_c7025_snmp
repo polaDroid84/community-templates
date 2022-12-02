@@ -1,0 +1,499 @@
+zabbix_export:
+  version: '6.0'
+  date: '2022-12-02T12:01:52Z'
+  groups:
+    -
+      uuid: 60f1dce8720d41eab748470cd7d4746e
+      name: Printers
+    -
+      uuid: debf9d71274d4b158564c11a65ac7eeb
+      name: XEROX
+  templates:
+    -
+      uuid: ea30ac4e7fab4867b2f700380ce39137
+      template: Xerox
+      name: Xerox
+      groups:
+        -
+          name: Printers
+        -
+          name: XEROX
+      items:
+        -
+          uuid: 357d3b098ed3446b983dc0b5c9e4f3ee
+          name: 'drum (R1)'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.43.11.1.1.9.1.6
+          key: drum_r1
+          tags:
+            -
+              tag: Application
+              value: drum
+        -
+          uuid: ba2216a8c8d4439bad6acad5bce23e15
+          name: 'drum (R1)'
+          type: CALCULATED
+          key: drum_r1_c
+          units: '%'
+          params: 'last(//drum_r1)/last(//drum_r1_max)*100'
+          tags:
+            -
+              tag: Application
+              value: usage
+          triggers:
+            -
+              uuid: 5daeee9f582e450d8d92e107f0ef5807
+              expression: last(/Xerox/drum_r1_c)=10
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: last(/Xerox/drum_r1_c)<>10
+              name: 'drum (R1) 10%'
+              priority: WARNING
+              manual_close: 'YES'
+            -
+              uuid: c95466e202cb46a5b31112fea884d1e6
+              expression: last(/Xerox/drum_r1_c)<10
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: last(/Xerox/drum_r1_c)>10
+              name: 'drum (R1) 10% alatt'
+              priority: AVERAGE
+              manual_close: 'YES'
+        -
+          uuid: 4cf1d4b0effb461393c9670785cd6541
+          name: 'drum (R1) max'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.43.11.1.1.8.1.6
+          key: drum_r1_max
+          tags:
+            -
+              tag: Application
+              value: drum
+        -
+          uuid: ee5ffcd39828425b9c0cd56980f5971b
+          name: 'drum (R2)'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.43.11.1.1.9.1.7
+          key: drum_r2
+          tags:
+            -
+              tag: Application
+              value: drum
+        -
+          uuid: 6dd72ab647f04c00a737a03865c6aca8
+          name: 'drum (R2)'
+          type: CALCULATED
+          key: drum_r2_c
+          units: '%'
+          params: 'last(//drum_r2)/last(//drum_r2_max)*100'
+          tags:
+            -
+              tag: Application
+              value: usage
+          triggers:
+            -
+              uuid: 8216c3d412c34c778a6fd6589199ee48
+              expression: last(/Xerox/drum_r2_c)=10
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: last(/Xerox/drum_r2_c)<>10
+              name: 'drum (R2) 10%'
+              priority: WARNING
+              manual_close: 'YES'
+            -
+              uuid: 652074dbb0b446b9af455e2c9e337973
+              expression: last(/Xerox/drum_r2_c)<10
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: last(/Xerox/drum_r2_c)>10
+              name: 'drum (R2) 10% alatt'
+              priority: AVERAGE
+              manual_close: 'YES'
+        -
+          uuid: dd55154d46614f4f91e18ed077337470
+          name: 'drum (R2) max'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.43.11.1.1.8.1.7
+          key: drum_r2_max
+          tags:
+            -
+              tag: Application
+              value: drum
+        -
+          uuid: ac6906973bf041469307f6fc3c7c4eb8
+          name: 'drum (R3)'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.43.11.1.1.9.1.8
+          key: drum_r3
+          tags:
+            -
+              tag: Application
+              value: drum
+        -
+          uuid: 1f35d97bb6254b9492f792426ec27e67
+          name: 'drum (R3)'
+          type: CALCULATED
+          key: drum_r3_c
+          units: '%'
+          params: 'last(//drum_r3)/last(//drum_r3_max)*100'
+          tags:
+            -
+              tag: Application
+              value: usage
+          triggers:
+            -
+              uuid: e47a53731a294b0eb0fa619744eb7127
+              expression: last(/Xerox/drum_r3_c)=10
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: last(/Xerox/drum_r3_c)<>10
+              name: 'drum (R3) 10%'
+              priority: WARNING
+              manual_close: 'YES'
+            -
+              uuid: 1e4509f62e254e95a5487830cc8ac431
+              expression: last(/Xerox/drum_r3_c)<10
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: last(/Xerox/drum_r3_c)>10
+              name: 'drum (R3) 10% alatt'
+              priority: AVERAGE
+              manual_close: 'YES'
+        -
+          uuid: b12d98ea62f9446f8855c4ff333213b3
+          name: 'drum (R3) max'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.43.11.1.1.8.1.8
+          key: drum_r3_max
+          tags:
+            -
+              tag: Application
+              value: drum
+        -
+          uuid: ce8a0c8c378b41ab94af0f225c2f69f4
+          name: 'drum (R4)'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.43.11.1.1.9.1.9
+          key: drum_r4
+          tags:
+            -
+              tag: Application
+              value: drum
+        -
+          uuid: 099657530b704a1eab1097c99f7fb850
+          name: 'drum (R4)'
+          type: CALCULATED
+          key: drum_r4_c
+          units: '%'
+          params: 'last(//drum_r4)/last(//drum_r4_max)*100'
+          tags:
+            -
+              tag: Application
+              value: usage
+          triggers:
+            -
+              uuid: 024b57b4cb7e44d98c64507cf3cd9f06
+              expression: last(/Xerox/drum_r4_c)=10
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: last(/Xerox/drum_r4_c)<>10
+              name: 'drum (R4) 10%'
+              priority: WARNING
+              manual_close: 'YES'
+            -
+              uuid: ccd617958c7e44a187916c32bbe42560
+              expression: last(/Xerox/drum_r4_c)<10
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: last(/Xerox/drum_r4_c)>10
+              name: 'drum (R4) 10% alatt'
+              priority: AVERAGE
+              manual_close: 'YES'
+        -
+          uuid: 31cefb66f6d14ac1aa3e80e37ffac389
+          name: 'drum (R4) max'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.43.11.1.1.8.1.9
+          key: drum_r4_max
+          tags:
+            -
+              tag: Application
+              value: drum
+        -
+          uuid: 8d1ad11204af406b8f2b9c7c3a363369
+          name: 'Printed Black'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.253.8.53.13.2.1.6.1.20.34
+          key: printed_black
+          tags:
+            -
+              tag: Application
+              value: usage
+        -
+          uuid: 2c5311f51e6641159e08f0e44e6506c0
+          name: 'Printed A3 Black'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.253.8.53.13.2.1.6.1.20.44
+          key: printed_big_black
+          tags:
+            -
+              tag: Application
+              value: usage
+        -
+          uuid: c00b5291c36a4380ab34289dd701d53e
+          name: SimplePing
+          type: SIMPLE
+          key: icmpping
+          delay: '360'
+          history: 7d
+        -
+          uuid: bdd5d8f05b2741ac8ff0f96b4963d7a2
+          name: 'All prints'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.43.10.2.1.4.1.1
+          key: printed_all
+          tags:
+            -
+              tag: Application
+              value: usage
+        -
+          uuid: f114e0b5e33d444f9d163aae23e1b645
+          name: Serial_number
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.2.1.43.5.1.1.17.1
+          key: Serial_number
+          delay: '86400'
+          history: 7d
+          trends: '0'
+          value_type: CHAR
+        -
+          uuid: f4844df11b944355b0d5c69b9c20ea7c
+          name: 'Color Prints'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.253.8.53.13.2.1.6.1.20.33
+          key: color_prints
+          tags:
+            -
+              tag: Application
+              value: usage
+        -
+          uuid: 9176a1420c314676a685e9583b8d145b
+          name: 'Color A3 Prints'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.253.8.53.13.2.1.6.1.20.43
+          key: color_big_prints
+          tags:
+            -
+              tag: Application
+              value: usage
+        -
+          uuid: 4cbdacc3d43f4a94961379d0807e4e60
+          name: Black
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.43.11.1.1.9.1.1
+          key: toner_level_black
+          value_type: FLOAT
+          units: '%'
+        -
+          uuid: 78f369c4058c4c0fb73a6c0a247f7282
+          name: Black
+          type: CALCULATED
+          key: toner_level_black_percent_C
+          units: '%'
+          params: 'last(//toner_level_black)/last(//toner_max)*100'
+          tags:
+            -
+              tag: Application
+              value: Toner
+          triggers:
+            -
+              uuid: ae198ee498b34ff7b26bfab80c5c9b41
+              expression: last(/Xerox/toner_level_black_percent_C)<=1
+              name: 'Replace Black Toner'
+              priority: DISASTER
+              manual_close: 'YES'
+            -
+              uuid: 4aa13cbc924b4467aadd2bdf70b3ff41
+              expression: last(/Xerox/toner_level_black_percent_C)<=2
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: last(/Xerox/toner_level_black_percent_C)>10
+              name: 'Low Black Toner Level'
+              priority: HIGH
+              manual_close: 'YES'
+            -
+              uuid: c12a92584d8846408f00204e85a147aa
+              expression: last(/Xerox/toner_level_black_percent_C)<=5
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: last(/Xerox/toner_level_black_percent_C)>10
+              name: 'Low Black Toner Level'
+              priority: AVERAGE
+              manual_close: 'YES'
+            -
+              uuid: ce6a8a87b542490da0678c6bf5ce0557
+              expression: last(/Xerox/toner_level_black_percent_C)<=10
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: last(/Xerox/toner_level_black_percent_C)<=5
+              name: 'Low Black Toner Level'
+              manual_close: 'YES'
+        -
+          uuid: dcb33eb01cc94260a98a98feedc6a32f
+          name: Cyan
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.43.11.1.1.9.1.4
+          key: toner_level_cyan
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            -
+              type: MULTIPLIER
+              parameters:
+                - '0.011111111111111111'
+          tags:
+            -
+              tag: Application
+              value: Toner
+          triggers:
+            -
+              uuid: ce04671a70f34417915376228ac01c1d
+              expression: last(/Xerox/toner_level_cyan)<=1
+              name: 'Replace Toner: CYAN'
+              priority: DISASTER
+              manual_close: 'YES'
+            -
+              uuid: 062fe67661c54e72bda956cbc911ea36
+              expression: last(/Xerox/toner_level_cyan)<=2
+              name: 'Low Cyan Toner Level'
+              priority: HIGH
+              manual_close: 'YES'
+            -
+              uuid: be542942c44c439a8081334c1b3a453a
+              expression: last(/Xerox/toner_level_cyan)<=5
+              name: 'Low Cyan Toner Level'
+              priority: AVERAGE
+              manual_close: 'YES'
+        -
+          uuid: 220afd9ed9ad4c66945140078907b638
+          name: Magenta
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.43.11.1.1.9.1.3
+          key: toner_level_magenta
+          units: '%'
+          preprocessing:
+            -
+              type: MULTIPLIER
+              parameters:
+                - '0.011111111111111111'
+          tags:
+            -
+              tag: Application
+              value: Toner
+          triggers:
+            -
+              uuid: 363b8e157ba840aa92ff641f3788473e
+              expression: last(/Xerox/toner_level_magenta)<=1
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: last(/Xerox/toner_level_magenta)>=1
+              name: 'Low Magenta Toner Level'
+              priority: HIGH
+              manual_close: 'YES'
+            -
+              uuid: c12d5a59b88145e892660aa3ee8573bc
+              expression: last(/Xerox/toner_level_magenta)<=2
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: last(/Xerox/toner_level_magenta)<=1
+              name: 'Low Magenta Toner Level'
+              priority: HIGH
+              manual_close: 'YES'
+            -
+              uuid: b3f912fd8b3541b9af89b945d2ca6afa
+              expression: last(/Xerox/toner_level_magenta)<=5
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: last(/Xerox/toner_level_magenta)<=2
+              name: 'Low Magenta Toner Level'
+              priority: AVERAGE
+              manual_close: 'YES'
+            -
+              uuid: 77e63dbb6fcb47c0978b19ea76bb0277
+              expression: last(/Xerox/toner_level_magenta)<=10
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: last(/Xerox/toner_level_magenta)<=5
+              name: 'Low Magenta Toner Level'
+              priority: INFO
+              manual_close: 'YES'
+        -
+          uuid: 585f993c616d4a829ed55161abe8c94f
+          name: Yellow
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.43.11.1.1.9.1.2
+          key: toner_level_yellow
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            -
+              type: MULTIPLIER
+              parameters:
+                - '0.011111111111111111'
+          tags:
+            -
+              tag: Application
+              value: Toner
+          triggers:
+            -
+              uuid: 3301de4324664b5fbdb0041f3a0e4c11
+              expression: last(/Xerox/toner_level_yellow)<=1
+              name: 'Replace Toner: Yellow'
+              priority: DISASTER
+              manual_close: 'YES'
+            -
+              uuid: ac19be3244b94b90ac550972a62d36c0
+              expression: last(/Xerox/toner_level_yellow)<=2
+              name: 'Low Yellow Toner Level'
+              priority: HIGH
+              manual_close: 'YES'
+            -
+              uuid: 81ea60f8ee4b474aa7bd4321e7a44c4c
+              expression: last(/Xerox/toner_level_yellow)<=5
+              name: 'Low Yellow Toner Level'
+              priority: AVERAGE
+              manual_close: 'YES'
+            -
+              uuid: 2b3bf53ea4184215af8dc929269c0c38
+              expression: last(/Xerox/toner_level_yellow)<=10
+              name: 'Low Yellow Toner Level'
+              priority: INFO
+              manual_close: 'YES'
+        -
+          uuid: f7c669b7cdc847318456d1936e32310f
+          name: 'Toner Maximum'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.43.11.1.1.8.1.1
+          key: toner_max
+        -
+          uuid: ac0f5b2125df4cbb96a39432fcdb7201
+          name: TotalPrits
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.43.10.2.1.4.1.1
+          key: TotalPrits
+          delay: '7200'
+          history: 7d
+          value_type: FLOAT
+      discovery_rules:
+        -
+          uuid: c913be46b2c242c9964c12896a34e29d
+          name: PaperTrayDiscovery
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.43.18.1.1.8.1
+          key: pptrdsc___delete
+          status: DISABLED
+          item_prototypes:
+            -
+              uuid: 6f53e1e5575541039de01e289e2e3f70
+              name: 'Low Paper Tray 2'
+              type: SNMP_AGENT
+              snmp_oid: .1.3.6.1.2.1.43.18.1.1.8.1.2812
+              key: lowpaper_
+              trends: '0'
+              value_type: TEXT
+              tags:
+                -
+                  tag: Application
+                  value: PaperTray
+        -
+          uuid: 0554cc70c27841a680729170babd560c
+          name: StatusDiscovery
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.25.3.5.1.2
+          key: status___delete
+          status: DISABLED
